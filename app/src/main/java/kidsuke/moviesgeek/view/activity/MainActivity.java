@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements Controller.View{
 
         //Fetch movie sort by popularity by default
         popularUrl = NetworkUtils.buildMovieApiUrl(NetworkUtils.POPULAR_MOVIES_RELATIVE_URL);
-        topratedUrl = NetworkUtils.buildMovieApiUrl(NetworkUtils.TOPRATED_MOVIED_RELATIVE_URL);
+        topratedUrl = NetworkUtils.buildMovieApiUrl(NetworkUtils.TOPRATED_MOVIES_RELATIVE_URL);
         new FetchMovieTask(controller).execute(popularUrl);
     }
 

@@ -20,7 +20,7 @@ public class NetworkUtils {
     public static final String IMAGESIZE_RELATIVE_URL = "w342";
     public static final String MOVIEDB_API_URL = "http://api.themoviedb.org/3/movie";
     public static final String POPULAR_MOVIES_RELATIVE_URL = "popular";
-    public static final String TOPRATED_MOVIED_RELATIVE_URL = "top_rated";
+    public static final String TOPRATED_MOVIES_RELATIVE_URL = "top_rated";
     //PUT YOUR API KEY IN API_KEY_VALUE
     public static final String API_KEY_PARAM = "api_key";
     public static final String API_KEY_VALUE = "a1e8ce6b2fea01330b9fbde846ac06a1";
