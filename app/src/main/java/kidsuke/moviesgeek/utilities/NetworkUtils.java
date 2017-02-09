@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class NetworkUtils {
     public static final String TAG = NetworkUtils.class.getSimpleName();
     public static final String IMAGE_BASE_URL = "http://image.tmdb.org/t/p";
-    public static final String IMAGESIZE_RELATIVE_URL = "w342";
+    public static final String IMAGESIZE_RELATIVE_URL = "w780";
     public static final String MOVIEDB_API_URL = "http://api.themoviedb.org/3/movie";
     public static final String POPULAR_MOVIES_RELATIVE_URL = "popular";
     public static final String TOPRATED_MOVIES_RELATIVE_URL = "top_rated";

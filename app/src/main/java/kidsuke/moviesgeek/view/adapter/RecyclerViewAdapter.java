@@ -1,6 +1,7 @@
 package kidsuke.moviesgeek.view.adapter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,11 @@ import java.net.URL;
 import java.util.List;
 
 import kidsuke.moviesgeek.R;
+import kidsuke.moviesgeek.controller.Controller;
 import kidsuke.moviesgeek.model.DTOMovie;
 import kidsuke.moviesgeek.utilities.NetworkUtils;
+import kidsuke.moviesgeek.view.activity.DetailActivity;
+import kidsuke.moviesgeek.view.activity.MainActivity;
 
 /**
  * Created by ADMIN on 24-Jan-17.
@@ -23,10 +27,12 @@ import kidsuke.moviesgeek.utilities.NetworkUtils;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<DTOMovie> movies;
     private Activity context;
+    private Controller controller;
 
-    public RecyclerViewAdapter(Activity ctx, List<DTOMovie> movies){
+    public RecyclerViewAdapter(Activity ctx, List<DTOMovie> movies, Controller controller){
         context = ctx;
         this.movies = movies;
+        this.controller = controller;
     }
 
     @Override
@@ -42,8 +48,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ImageView imageView = ((ViewHolder) holder).getImageView();
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("movie", movies.get(position));
+                ((MainActivity) context).navigateActivity(DetailActivity.class, bundle);
+            }
+        });
         URL imgUrl = NetworkUtils.buildImageUrl(movies.get(position).getPosterPath());
         Picasso.with(context).load(imgUrl.toString()).into(imageView);
     }

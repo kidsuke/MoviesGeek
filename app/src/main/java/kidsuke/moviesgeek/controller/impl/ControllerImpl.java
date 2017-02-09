@@ -1,5 +1,8 @@
 package kidsuke.moviesgeek.controller.impl;
 
+import android.os.Bundle;
+import android.os.Parcelable;
+
 import java.util.List;
 
 import kidsuke.moviesgeek.controller.Controller;
@@ -10,14 +13,14 @@ import kidsuke.moviesgeek.model.DTOMovie;
  */
 
 public class ControllerImpl implements Controller {
-    private View mView;
+    private MainView mMainView;
 
-    public ControllerImpl(View view){
-        mView = view;
+    public ControllerImpl(MainView view){
+        mMainView = view;
     }
 
     @Override
     public void updateMoviesList(List<DTOMovie> movies) {
-        mView.updateMoviesList(movies);
+        mMainView.updateMoviesList(movies);
     }
 }

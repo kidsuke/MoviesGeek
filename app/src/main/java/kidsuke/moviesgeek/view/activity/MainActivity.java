@@ -1,5 +1,6 @@
 package kidsuke.moviesgeek.view.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,10 +21,11 @@ import kidsuke.moviesgeek.network.FetchMovieTask;
 import kidsuke.moviesgeek.utilities.NetworkUtils;
 import kidsuke.moviesgeek.view.adapter.RecyclerViewAdapter;
 
-public class MainActivity extends AppCompatActivity implements Controller.View{
+public class MainActivity extends AppCompatActivity implements Controller.MainView{
+    public static final String TAG = MainActivity.class.getSimpleName();
     private RecyclerViewAdapter adapter;
     private URL popularUrl, topratedUrl;
-    Controller controller;
+    private Controller controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements Controller.View{
 
         //Set up adapter for recycler view
         List<DTOMovie> movies = new ArrayList<>();
-        adapter = new RecyclerViewAdapter(this, movies);
+        adapter = new RecyclerViewAdapter(this, movies, controller);
         recyclerView.setAdapter(adapter);
         //Set up layout manager for recycler view
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
@@ -74,6 +76,13 @@ public class MainActivity extends AppCompatActivity implements Controller.View{
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void navigateActivity(Class activityClass, Bundle extras) {
+        Intent intent = new Intent(this, activityClass);
+        intent.putExtra(TAG, extras);
+        startActivity(intent);
     }
 
     @Override

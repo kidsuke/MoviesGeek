@@ -3,4 +3,7 @@
     <string name="sort_by">Sort by</string>
     <string name="popular_movie">Popular</string>
     <string name="toprated_movie">Top Rated</string>
+    <string name="overview">Overview</string>
+    <string name="rating">Rating</string>
+    <string name="release_date">Release Date</string>
 </resources>
