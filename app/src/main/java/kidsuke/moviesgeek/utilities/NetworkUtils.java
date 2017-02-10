@@ -3,6 +3,7 @@ package kidsuke.moviesgeek.utilities;
 import android.net.Uri;
 import android.util.Log;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -77,6 +78,8 @@ public class NetworkUtils {
             } else {
                 return null;
             }
+        } catch (FileNotFoundException e){
+            return null;
         } finally {
             urlConnection.disconnect();
         }

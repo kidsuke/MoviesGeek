@@ -1,6 +1,8 @@
 package kidsuke.moviesgeek.view.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -87,6 +89,18 @@ public class MainActivity extends AppCompatActivity implements Controller.MainVi
 
     @Override
     public void updateMoviesList(List<DTOMovie> movies) {
-        adapter.updateList(movies);
+        if (movies != null)
+            adapter.updateList(movies);
+        else{
+            new AlertDialog.Builder(this)
+                    .setMessage("No data received. Check again API key or internet connection")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setCancelable(true).show();
+        }
     }
 }

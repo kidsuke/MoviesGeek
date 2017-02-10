@@ -24,15 +24,18 @@ import kidsuke.moviesgeek.model.DTOMovie;
 public class OpenMovieJsonUtils {
     public static List<DTOMovie> transferToDTOMovie(String json){
         Gson gson = new Gson();
-        List<DTOMovie> movies = new ArrayList<>();
+        List<DTOMovie> movies = null;
 
-        JsonObject jsonResult = gson.fromJson(json, JsonObject.class);
-        JsonArray jsonMoviesArray = jsonResult.getAsJsonArray("results");
+        if (json != null) {
+            movies = new ArrayList<>();
+            JsonObject jsonResult = gson.fromJson(json, JsonObject.class);
+            JsonArray jsonMoviesArray = jsonResult.getAsJsonArray("results");
 
-        for (int i = 0; i < jsonMoviesArray.size(); i++){
-            JsonElement jsonMovie = jsonMoviesArray.get(i);
-            DTOMovie dtoMovie = gson.fromJson(jsonMovie, DTOMovie.class);
-            movies.add(dtoMovie);
+            for (int i = 0; i < jsonMoviesArray.size(); i++) {
+                JsonElement jsonMovie = jsonMoviesArray.get(i);
+                DTOMovie dtoMovie = gson.fromJson(jsonMovie, DTOMovie.class);
+                movies.add(dtoMovie);
+            }
         }
 
         return movies;

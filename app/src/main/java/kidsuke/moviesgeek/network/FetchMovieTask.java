@@ -41,8 +41,6 @@ public class FetchMovieTask extends AsyncTask <URL, Void, List<DTOMovie>> {
 
     @Override
     protected void onPostExecute(List<DTOMovie> movies) {
-        if (movies != null && movies.size() != 0){
-            controller.updateMoviesList(movies);
-        }
+        controller.updateMoviesList(movies);
     }
 }
