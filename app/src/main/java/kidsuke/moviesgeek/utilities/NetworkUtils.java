@@ -26,7 +26,7 @@ public class NetworkUtils {
     public static final String MOVIE_REVIEWS_RELATIVE_URL = "reviews";
     //PUT YOUR API KEY IN API_KEY_VALUE
     public static final String API_KEY_PARAM = "api_key";
-    public static final String API_KEY_VALUE = "a1e8ce6b2fea01330b9fbde846ac06a1";
+    public static final String API_KEY_VALUE = "";
 
     public static URL buildImageUrl(String filepath){
         Uri uri = Uri.parse(IMAGE_BASE_URL).buildUpon()
