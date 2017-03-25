@@ -29,6 +29,10 @@ public class DTOMovie implements Parcelable{
         return popularity;
     }
 
+    public int getId(){
+        return id;
+    }
+
     public String getReleaseDate(){
         return release_date;
     }

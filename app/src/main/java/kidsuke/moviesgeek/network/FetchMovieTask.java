@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import kidsuke.moviesgeek.controller.Controller;
+import kidsuke.moviesgeek.presenter.Presenter;
 import kidsuke.moviesgeek.model.DTOMovie;
 import kidsuke.moviesgeek.utilities.NetworkUtils;
 import kidsuke.moviesgeek.utilities.OpenMovieJsonUtils;
@@ -18,10 +18,10 @@ import kidsuke.moviesgeek.utilities.OpenMovieJsonUtils;
 
 public class FetchMovieTask extends AsyncTask <URL, Void, List<DTOMovie>> {
     public static final String TAG = FetchMovieTask.class.getSimpleName();
-    private Controller controller;
+    private Presenter controller;
 
-    public FetchMovieTask(Controller controller){
-        this.controller = controller;
+    public FetchMovieTask(Presenter presenter){
+        this.controller = presenter;
     }
 
     @Override

@@ -4,11 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,8 +24,9 @@ import kidsuke.moviesgeek.model.DTOMovie;
  */
 
 public class OpenMovieJsonUtils {
+    private static Gson gson = new Gson();
+
     public static List<DTOMovie> transferToDTOMovie(String json){
-        Gson gson = new Gson();
         List<DTOMovie> movies = null;
 
         if (json != null) {
@@ -39,5 +42,18 @@ public class OpenMovieJsonUtils {
         }
 
         return movies;
+    }
+
+    public static <T> List<T> convertJsonToObjectList(String json){
+        Type listType = new TypeToken<List<T>>(){}.getType();
+        return gson.fromJson(json, listType);
+    }
+
+    public static <T> T convertJsonToObject(String json, Class<T> classOfT){
+        return gson.fromJson(json, classOfT);
+    }
+
+    public static <T> String covertObjectToJson(T object) {
+        return gson.toJson(object);
     }
 }

@@ -18,13 +18,15 @@ import java.util.Scanner;
 public class NetworkUtils {
     public static final String TAG = NetworkUtils.class.getSimpleName();
     public static final String IMAGE_BASE_URL = "http://image.tmdb.org/t/p";
-    public static final String IMAGESIZE_RELATIVE_URL = "w780";
+    public static final String IMAGESIZE_RELATIVE_URL = "w342";
     public static final String MOVIEDB_API_URL = "http://api.themoviedb.org/3/movie";
     public static final String POPULAR_MOVIES_RELATIVE_URL = "popular";
     public static final String TOPRATED_MOVIES_RELATIVE_URL = "top_rated";
+    public static final String MOVIE_TRAILERS_RELATIVE_URL = "videos";
+    public static final String MOVIE_REVIEWS_RELATIVE_URL = "reviews";
     //PUT YOUR API KEY IN API_KEY_VALUE
     public static final String API_KEY_PARAM = "api_key";
-    public static final String API_KEY_VALUE = "";
+    public static final String API_KEY_VALUE = "a1e8ce6b2fea01330b9fbde846ac06a1";
 
     public static URL buildImageUrl(String filepath){
         Uri uri = Uri.parse(IMAGE_BASE_URL).buildUpon()
@@ -48,6 +50,26 @@ public class NetworkUtils {
     public static URL buildMovieApiUrl(String sortBy){
         Uri uri = Uri.parse(MOVIEDB_API_URL).buildUpon()
                 .appendPath(sortBy)
+                .appendQueryParameter(API_KEY_PARAM, API_KEY_VALUE)
+                .build();
+
+        URL url = null;
+        try {
+            url = new URL(uri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            Log.e(TAG, "Malformed Movie Api URL Exception");
+        }
+
+        Log.v(TAG, "Built Movie Api URI " + url);
+
+        return url;
+    }
+
+    public static URL buildMovieApiUrl(String id, String path){
+        Uri uri = Uri.parse(MOVIEDB_API_URL).buildUpon()
+                .appendPath(id)
+                .appendPath(path)
                 .appendQueryParameter(API_KEY_PARAM, API_KEY_VALUE)
                 .build();
 

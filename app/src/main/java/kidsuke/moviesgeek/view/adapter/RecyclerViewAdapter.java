@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.List;
 
 import kidsuke.moviesgeek.R;
-import kidsuke.moviesgeek.controller.Controller;
+import kidsuke.moviesgeek.presenter.Presenter;
 import kidsuke.moviesgeek.model.DTOMovie;
 import kidsuke.moviesgeek.utilities.NetworkUtils;
 import kidsuke.moviesgeek.view.activity.DetailActivity;
@@ -27,9 +27,9 @@ import kidsuke.moviesgeek.view.activity.MainActivity;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<DTOMovie> movies;
     private Activity context;
-    private Controller controller;
+    private Presenter controller;
 
-    public RecyclerViewAdapter(Activity ctx, List<DTOMovie> movies, Controller controller){
+    public RecyclerViewAdapter(Activity ctx, List<DTOMovie> movies, Presenter controller){
         context = ctx;
         this.movies = movies;
         this.controller = controller;
